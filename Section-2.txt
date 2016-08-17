@@ -1,0 +1,241 @@
+Section 2 Summary
+Section 2, Lecture 15
+The File Status Lifecycle
+The File Status Lifecycle (untracked/unmodified/modified/staged)
+
+Installing Git
+Installing Git on Windows
+Use Internet Explorer or any other browser to the direction: http://msysgit.github.io/
+
+You can use the preconfigured options.
+
+The Windows Git Bash utility allows you to use Git exactly the same as in other operating systems, i.e. Linux/Unix/Mac, and it’s what we will teach on this course, so it’s important to use it.
+
+You can run Git Bash from “Programs > Git > Git Bash”.
+
+Commands for the management of files and directories in Git Bash
+
+pwd = displays the current directory where the user is at.
+
+ls = displays the contents of the current directory where the user is at. When you start Git Bash, you will be in what’s called the “Home Directory” or the initial user folder. This directory is generally represented with the tilde “~” sign. To see all the files and directories, including the hidden ones, pass the “a” flag, by typing “ls -a”.
+
+mkdir <directory> = allows the creation of a new directory or folder with the name you select. It’s always a good practice to use only letters, numbers, dashes or underscores. In our example, we created the test directory we named “testgit” by typing “mkdir testgit”.
+
+cd <directory> = allows the user to change to the selected directory. You can use the name of any existing directory on the computer as long as you have the right permissions, for example the directories listed in the “ls” command described above.
+
+clear = clears the screen.
+
+To verify that you have Git installed, write “git” in the terminal. You should see a list of available commands. To see what version of Git you have, just type “git --version”.
+
+Installing Git on Mac
+If you are in Mac OS X (10.9) and you have installed the Xcode development tools, it’s possible that you already have Git. Before installing it, verify if you have it installed by opening Terminal (by doing “Command” + “Space” and typing “Terminal”) and once inside the terminal, type “git” and enter. If you get an error, then proceed to install Git as follows.
+
+There are a couple of ways to install Git on Mac:
+
+- Use MacPorts or Brew (please refer to the instructions on those package managers).
+
+- Use a graphical installer, by going to: http://git-scm.com
+
+If you use a graphical installer, after you download the package, you need to open it using the “control” key depressed and selecting the “Open” button. This is necessary because Apple won’t allow you to open packages that are not downloaded using the App store.
+
+The best way to use Git is through the Mac Terminal program. To open the Terminal program, you can use the Mac’s Spotlight search, by clicking “Command” + “Space” and then typing the word “Terminal” and clicking on the black screen icon.
+
+Once in the Terminal, type the “git” command and press “enter”. If you see the Git commands listed, you’re ready to continue.
+
+If you get an error saying the Git wasn’t found, you might need to modify your profile to tell the Operating System where to find Git.
+
+In order to do this, you can edit your profile by using the text editing tool called “vi”. Type “vi ~/.profile”. This will open that file on the text editor. Press the “i” key (to enter insertion mode), move the cursor using the arrow keys to the end of the file and then press “enter” to get to a new line, and then type:
+
+export PATH=$PATH:/usr/local/git/bin
+
+After this, hit the “esc” key and write “:wq” (colon, the letter “w” and the letter “q”) and then press “enter”.
+
+Finally close the Terminal (by either going to the menu “Terminal > Quit Terminal” or by pressing “command” + “q”) and open it again with the “command” + “space” and “terminal” shortcut.
+
+Once back in the terminal, type “git” and verify that the Git commands appear.
+
+The Text Editors
+Here are the links to the code editors recommended in the lesson:
+
+Mac
+
+- Textmate (paid)
+
+- Sublime Text (paid but with unlimited trial use)
+
+- Atom (free)
+
+- TextEdit (free, comes with the Mac)
+
+Windows
+
+- Notepad++ (free)
+
+- Sublime Text (paid but with unlimited trial use)
+
+- Atom (free)
+
+- Notepad (free, comes with Windows)
+
+Basic Operations
+Commands for the management of files and directories in Git Bash
+
+pwd = displays the current directory where the user is at.
+
+ls = displays the contents of the current directory where the user is at. When you start Git Bash, you will be in what’s called the “Home Directory” or the initial user folder. This directory is generally represented with the tilde “~” sign. To see all the files and directories, including the hidden ones, pass the “a” flag, by typing “ls -a”.
+
+mkdir <directory> = allows the creation of a new directory or folder with the name you select. It’s always a good practice to use only letters, numbers, dashes or underscores. In our example, we created the test directory we named “testgit” by typing “mkdir testgit”.
+
+cd <directory> = allows the user to change to the selected directory. You can use the name of any existing directory on the computer as long as you have the right permissions, for example the directories listed in the “ls” command described above.
+
+clear = clears the screen.
+
+Git Commands
+
+Git init = Initializes a directory and converts it to a Git repository. When the repository is initialized, Git creates a hidden directory called “.git” inside the top level of the repository. Git will store a bunch of information about the repository in there.
+
+Before we do any operation, we must configure our new user. To do this, we tell Git our name and email, doing the following commands:
+
+git config user.name "John Doe”
+
+git config user.email “john.doe@example.com”
+
+These commands will store those settings on the current repository only. If you want Git to always use the same credentials for all subsequent repositories, we need to add the “global” flag, by typing:
+
+git config --global user.name "John Doe”
+
+git config --global user.email “john.doe@example.com”
+
+Git status = provides information on the current state of our repository.
+
+In the video we use the Atom code editor, which is a Github project and it’s totally free. It works with Windows, Mac and Linux. To donwload Atom, go to https://atom.io/.
+
+Git add <file or file list> = allows the addition of a new file or modified file or files to the list of staged files ready for the next snapshot. Remember that if a file in staging status is edited, it will be taken out of the list and it moves to a “modified” state, and thus will not be included in the next snapshot, since Git thinks that you are still in the process of working on it. When you finish editing the file, save it and do another “git add” to that file. You can also add all files at once by doing “git add .” (i.e. “git” + “add” and the “period” sign).
+
+Git commit -m “<message>” = creates a snapshot with all the files in the staging area and with a specified commit message. Files that are not being tracked or are in a “modified” state will not be included. It is very important that the message you write is descriptive of the changes that are being introduced.
+
+Each snapshot has a unique identifier called a “hash”. This hash generally has letters and numbers and with that identifier you will be able to recover the state of the project in that moment of time.
+
+Basic Operations Visualized
+Commits diagram.
+
+History of the Project
+Git log allows you to see the snapshots (commits) of the project in descending order.
+
+Each line has an identifier of type SHA1.
+
+When you do “git log”, you might spawn a new separate window within the terminal which corresponds to a utility called “less” that allows you to read the contents. Using the keyboard arrows up and down, you can scroll through the history of the project. To exit that window, you can hit the letter “q”.
+
+If you don’t want to use “less” and rather display the Git log in the current window, you can use the “cat” utility. To enable Git log to use it, you can issue the following command:
+
+git config --global core.pager cat
+
+To display differences between snapshots, you can use:
+
+git log -p
+
+If you only want to see the last “n” commits, you can use:
+
+git log -<n>
+
+To see an abbreviated version of the commits, you can use:
+
+git log --oneline
+
+To see a graphical representations of the branches, you can use:
+
+git log --graph
+
+For date-based operations on the history you can use some of the parameters below:
+
+git log --since=2.days (see commits since the last 2 days)
+
+git log --since=2.weeks (see commits since 2 weeks ago)
+
+git log --since=”2014-09-12” (see commits since September 12, 2014)
+
+git log --after=”2014-09-12” (see commits after September 12, 2014)
+
+git log --until=”2014-09-12” (see commits until September 12, 2014)
+
+git log --before=3.days (see commits before 3 days ago)
+
+To see the commits done by a specific user, type:
+
+git log --author=”John Doe”
+
+Finally, you can combine any of the parameters, for example to see the last 3 commits in abbreviated form before 2 days ago:
+
+git log -3 --oneline --before=2.days
+
+To see all the available options for Git log, you can type:
+
+git help log
+
+There’s also a good summary in this page.
+
+To see what the repository looked like at any commit, you can use:
+
+git checkout <hash>
+
+Where “hash” corresponds to the commit’s SHA1 identifier.
+
+It is not wise to do changes to the project in this “Detached head” state. If you want to work on the project in this state, you can start a new branch off of this version and then possible merge with the master or whatever branch you need.
+
+Other Basic Operations
+To move one file from one directory to another, or to rename it, you can use:
+
+git mv <origin> <destination>
+
+For example, if you want to rename a file called foo.txt to bar.txt, you use:
+
+git mv foo.txt bar.txt
+
+If you want to move an image called foo.jpg from the “photos” directory to the “images” directory, you can use:
+
+git mv photos/foo.jpg images/foo.jpg
+
+To delete a file you can use:
+
+git rm <archivo>
+
+To ignore certain files, like temporary files or those generated automatically by some process that you don’t want to include in your repository, you can use a file called “.gitignore” on the top level of the repository.
+
+.gitignore uses patterns to recognize certain types of files. For a quick guide in these patterns you can read this.
+
+Finally to see the differences between our current work and a specific snapshot, you can use:
+
+git diff <SHA1>
+
+You can also use a graphical tool to see the history, by typing:
+
+gitk
+
+Undoing Things
+To change any file or commit message after doing the commit, we can use:
+
+git commit —amend
+
+Generally, this will start the “vi” text editor, which is the built-in editor. You can change the default editor with the command:
+
+git config --global core.editor <editor>
+
+If you use “vi”, remember you can move the cursor wherever you want using the keyboard arrows. Once you get to the place you want to edit, you press the “i” key to enter insert mode, do any changes and the hit the “esc/escape” key, press the colon “:” key and then write “w” and “q”, for write and quit.
+
+If you want to take a file or group of files out of the staging area, you can do the following:
+
+git reset HEAD <file>
+
+This will put the file in the modified area.
+
+If you want to discard the changes to a file in which we were working and reset it to the state it was in the last commit, you can do:
+
+git checkout — <file>
+
+If you want to discard all the changes you’ve done to all the files since the last commit, you can use:
+
+git reset HEAD --hard
+
+If you want to discard the complete commit and take the repository back one commit earlier, you can do:
+
+git reset HEAD^ --hard
