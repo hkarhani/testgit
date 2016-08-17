@@ -1,0 +1,62 @@
+Section 3 Summary
+Section 3, Lecture 20
+Introduction to Remote Repositories and Git Clone
+Git allows you to work with remote repositories using various utilities we will see in this section.
+
+The first tool is:
+
+git clone <url> <directory>
+
+Git clone will copy all the repository code and history from the URL provided to your local directory, including all commits and branches available. The code will be put in the directory you select, and if you omit the directory, it will create a new directory with the name of the repository.
+
+This simple operation is a big part of the Open Source movement, because thanks to this any developer in the world can collaborate with projects he likes, finding bugs or suggesting improvements.
+
+git remote
+To manage remote repositories, we use the git remote command.
+
+To see all the remote repositories a project has, you write:
+
+git remote -v
+
+A project can have multiple remote repositories associated.
+
+To see the details of a remote repository, we use:
+
+git remote show <repository name>
+
+To add a remote repository, we use:
+
+git remote add <name> <remote repository URL>
+
+Name is the name you will be using to refer to the repository. Generally the name “origin” is used if it’s the main remote repository.
+
+To rename a repository we use:
+
+git remote rename <old name> <new name>
+
+Finally to delete a reference to a remote repository, you use:
+
+git remote rm <name>
+
+git fetch and pull and push
+There are three main operations related to the workflow of remote repositories.
+
+The first, git fetch, retrieves all the changes from the remote repository, but doesn’t apply them locally after they’ve been downloaded. The format for this command is:
+
+git fetch <remote repository name> <remote branch>
+
+You can omit the remote branch parameter if you want to download all the available changes.
+
+To apply the changes to your local repository, you use:
+
+git merge <remote repository name> <local branch>
+
+If you want to skip the merge step, you can use one command only: git pull. The format is:
+
+git pull <remote repository name> <remote branch>
+
+You can also skip the name of the remote branch and it will pull all the changes from the branch “master”.
+
+To transmit the changes of your local repository to the remote repository, we use:
+
+git push <remote repository name> <remote branch>
