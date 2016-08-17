@@ -1,2 +1,6 @@
 another file
+<<<<<<< HEAD
 changes in dev
+=======
+One more Comment!
+>>>>>>> 87b17c03ec0b4a568b92a2f79cd65117425f0529
